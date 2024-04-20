@@ -16,16 +16,20 @@ app.use(bodyParser.json());
 
 //
 app.get("/", function (req, res) {
-  res.send("Newsletter-Get Job Executed sucessfully!");
+  res.send("Executed sucessfully!");
 });
 //
 app.post("/notion", function (req, res) {
-  sendToNotion(req.body.title, req.body.summary);
-  res.send("Newsletter-Get Job Executed sucessfully!");
+  const title = req.body.title;
+  const summary = req.body.summary;
+
+  sendToNotion(title, summary);
+
+  return res.send("Executed sucessfully!");
 });
 // ___________________________________________________________________________________
 
-app.listen(process.env.PORT || 6969);
+app.listen(process.env.PORT);
 console.log("\nServer running at port: http://localhost:6969\n");
 
 // ___________________________________________________________________________________
